@@ -1,4 +1,4 @@
-console.log("Rock, Paper, Scissors");
+console.log('HI');
 
 const options = ["rock", "paper","scissors"];
 
@@ -7,10 +7,65 @@ const options = ["rock", "paper","scissors"];
 // Contains a Math.random method
 // Randomly returns one of the 3 string values with the math.random method
 function getComputerChoice() {
-    console.log("Computer");
-    return Math.floor(Math.random() * options.length);
+
+    /* DO NOT REMOVE Math.floor
+    const choice = options[(Math.random() * options.length)];
+    console.log();
+    */
+   const choice = options[Math.floor(Math.random() * options.length)];
+    console.log();
+    return choice;
 }
 
+function getPlayerChoice() {
+    choice = prompt("Rock, paper, or scissors? ");
+    console.log();
+    return choice.trim();
+}
+
+// Function for checking the winner
+function checkWinner(playerSelection, computerSelection) {
+    if (playerSelection == computerSelection) {
+        return "Tie";
+        // else if it's the winning object
+    } 
+    else if(
+        (playerSelection == "rock" && computerSelection == "scissors") ||
+        (playerSelection == "scissors" && computerSelection == "paper") ||
+        (playerSelection == "paper" && computerSelection == "rock")
+    ) {
+        return "Player";
+    }
+    else {
+        return "Computer";
+    }
+}
+
+
+function playRound(playerSelection, computerSelection) {
+    const result = checkWinner(playerSelection, computerSelection);
+    if (result == "Tie") {
+        return "It's a Draw! Everyone wins!"
+        // else if it's the winning object
+        //return the winner
+    } 
+    else if ( result == "Player") {
+        return `You win! ${playerSelection} beats ${computerSelection}`
+    }
+    else {
+        return `You lose! ${computerSelection} beats ${playerSelection}`
+    }
+}
+
+const playerSelection = getPlayerChoice();
+const computerSelection = getComputerChoice();
+
+playRound(playerSelection, computerSelection);
+console.log(playRound(playerSelection,computerSelection));
+
+
+/* DEMO CODE:
+ 
 function getHumanChoice () {
     console.log("You");
     let choice = prompt("Rock, Paper, or Scissors?");
@@ -40,6 +95,7 @@ function playRound(humanChoice, computerChoice) {
 // Function for announcing the winner
 // If player and computer's guess are equal
 // Return it's a tie
+const result = "";
 function playRound(humanChoice, computerChoice) {
   if (result == "Draw") {
     return "It's a Draw! Everyone wins!"
@@ -63,3 +119,4 @@ console.log(playRound(humanSelection,computerSelection));
 
 getComputerChoice();
 
+*/
